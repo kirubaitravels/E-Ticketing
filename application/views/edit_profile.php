@@ -1,17 +1,17 @@
             <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="#">Home</a></li>
                     <li class="active" style = "color:green">Edit Profile</li>
                 </ul>
-                <!-- END BREADCRUMB -->                  
-                    
+                <!-- END BREADCRUMB -->
+
                 <!-- /.row -->
                 <div class="row">
                     <div class = "col-md-4" style ="background-color:#E3E4E4;border-radius:3px;margin-left:30px;min-height:33em">
                     <div id = "result" style = "color:green"></div>
                         <!-- Complete registration form -->
                         <div class="input-group input-group-lg">
-                            <?php 
+                            <?php
                                 echo validation_errors();
                                 echo form_open_multipart('home/update_photo','id="company_profile"','class="form collapse"');
                             ?>
@@ -27,16 +27,16 @@
 
                                                     if(($this->session->userdata('account_type'))=="BUS COMPANY")
                                                     {
-                                                        $image = $this->busadmindata->profile_image($bus_company); 
+                                                        $image = $this->busadmindata->profile_image($bus_company);
                                                     }
 
                                                     else if(($this->session->userdata('account_type'))=="PREMIUM USER")
                                                     {
-                                                        $image = $this->main_model->profile_image($user_id); 
+                                                        $image = $this->main_model->profile_image($user_id);
                                                     }
                                                     else if(($this->session->userdata('account_type'))=="ADMIN")
                                                     {
-                                                        $image = $this->main_model->profile_image($user_id); 
+                                                        $image = $this->main_model->profile_image($user_id);
                                                     }
 
                                                     if((($this->session->userdata('account_type'))=="BUS COMPANY")&&(($this->session->userdata('bus_company_id'))!=""))
@@ -53,7 +53,7 @@
                                                         echo "<img style = 'width:80%' src = '".base_url()."userImages/".$image."'"."alt ='John Doe'/>";
                                                     }
 
-                                                    else 
+                                                    else
                                                     {
                                                         echo "<img src = '".base_url()."userImages/default.jpg'  alt ='John Doe'/>";
                                                     }
@@ -70,7 +70,7 @@
                                 </div>
                                 <?php
                                     if(($this->session->userdata('account_type'))=="BUS COMPANY")
-                                    {   
+                                    {
 
                                         echo "<p style = 'color:green'>Company Registration Number</p>".
                                         "<div style ='background-color:white;height:30px;padding-left:5px;border-radius:5px'>".
@@ -78,12 +78,12 @@
 
                                         echo "<p style = 'color:green;margin-top:5px'>KRA PIN</p>".
                                         "<div style ='background-color:white;height:30px;padding-left:5px;border-radius:5px'>".
-                                        $this->session->userdata('kra_pin')."</div>";                          
+                                        $this->session->userdata('kra_pin')."</div>";
                                     }
-                                ?>                             
+                                ?>
                         </div>
 
-                        
+
                     </div>
 
                     <div class = "col-md-4" style ="background-color:#E3E4E4;border-radius:3px;margin-left:30px;padding-top:20px;height:33em" id = "googleMap">
@@ -148,7 +148,7 @@
                                         <div class='form-group'>
                                             <label for='exampleInputEmail1'>Name</label>
                                             <input type='text' class='form-control' name='name' placeholder='".$this->session->userdata('name')."' required/>
-                                        </div> 
+                                        </div>
 
                                         <label for='exampleInputEmail1'>Mobile NO</label>
                                         <div class='input-group'>
@@ -176,7 +176,6 @@
                     </div>
                     <?php echo form_close();?>
                     <!-- End of form -->
-                   <!-- <?php //if (($this->session->userdata('account_type'))=="BUS COMPANY"){//echo "id = 'company_update_profile'";} else{echo "id = 'user_update_profile'";}?> -->
                 </div>
                 <!-- /.row -->
 
