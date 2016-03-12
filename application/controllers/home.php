@@ -14,12 +14,6 @@ class Home extends CI_Controller
 
     public function index()
     {
-      //$userData = array(
-
-                       // 'username'=$this->session->userdata('username'),
-                       // );
-
-      //if(isset($userData['userid'] && !empty($data['id'])))
       $this->load->helper(array('form'));
       $this->home_load();
     }
@@ -33,20 +27,12 @@ class Home extends CI_Controller
     //First page that is loaded
     public function home_load()
     {
-      
-
       $data['title'] ='E-ticketing';
       $data['cities']=$this->main_model->get_cities();
-
-      $this->load->helper(array('form'));     
-      
-
-    
+      $this->load->helper(array('form'));
       $this->load->view('header',$data);
       $this->load->view('index',$data);  //From home.php
       $this->load->view('footer');
-
-
    }
 
   //User Page
@@ -54,19 +40,11 @@ class Home extends CI_Controller
   //Access_Level set to PREMIUM USER
   public function userpage()
     {
-      //$this->load->model('model_users');
-      $data  = array
-            (
-              'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-            );
-
-    $this->load->helper(array('form'));
-    $this->load->view('userpagesheader',$data);
-    $this->load->view('userpage',$data);
-    $this->load->view('userpagefooter',$data);
-
-
-
+      $data  = array('title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be');
+      $this->load->helper(array('form'));
+      $this->load->view('userpagesheader',$data);
+      $this->load->view('userpage',$data);
+      $this->load->view('userpagefooter',$data);
   }
 
   //Admin Page
@@ -136,9 +114,6 @@ class Home extends CI_Controller
       $this->load->view('userpagesheader',$data);
       $this->load->view('subscription',$data);
       $this->load->view('userpagefooter',$data);
-
-
-
   }
 
     public function completeUserReg()
@@ -151,10 +126,7 @@ class Home extends CI_Controller
       $this->load->helper(array('form'));
       $this->load->view('userpagesheader',$data);
       $this->load->view('completeuserdetails',$data);
-     $this->load->view('userpagefooter',$data);
-
-
-
+      $this->load->view('userpagefooter',$data);
   }
 
     public function completeBusReg()
@@ -168,146 +140,125 @@ class Home extends CI_Controller
       $this->load->view('userpagesheader',$data);
       $this->load->view('completecompanydetails',$data);
       $this->load->view('userpagefooter',$data);
-
-
-
   }
 
 
     public function user_payment_details()
-  {
+    {
 
-              $checked_checkbox=$this->input->post('seat');
-              $bus_company=$this->input->post('bus_company');
-              $count_result=count($checked_checkbox);
-              $schedule_id=$this->input->post('schedule_id');
+        $checked_checkbox=$this->input->post('seat');
+        $bus_company=$this->input->post('bus_company');
+        $count_result=count($checked_checkbox);
+        $schedule_id=$this->input->post('schedule_id');
 
-              $plate=$this->input->post('plate');
-              $from=$this->input->post('from');
-              $to=$this->input->post('to');
-              $price=$this->input->post('price');
+        $plate=$this->input->post('plate');
+        $from=$this->input->post('from');
+        $to=$this->input->post('to');
+        $price=$this->input->post('price');
 
-              // echo $schedule_id;
-            
-             // echo $count_result;
-              
-              $vr=12;
-             
-             if(isset($checked_checkbox[0]) || isset($checked_checkbox[1])) 
-              
-              {
-                    if (isset($checked_checkbox[1])) {
-                      $checkbox2=$checked_checkbox[1];
-                    }
-                    else
-                    {
-                      $checkbox2='';
-                    }
-                $checkbox1=$checked_checkbox[0];
-                
-                //echo  $checkbox1;
-                $userSeatingPosition= array(
-                  'pos_id'=>$vr,
-                  'posit'=>$checkbox1.','.$checkbox2
-                  );
-             echo $userSeatingPosition['posit'];
+        $vr=12;
 
-              $result_check= $this->main_model->users_sitting($userSeatingPosition);
+       if(isset($checked_checkbox[0]) || isset($checked_checkbox[1]))
+
+        {
+              if (isset($checked_checkbox[1])) {
+                $checkbox2=$checked_checkbox[1];
               }
+              else
+              {
+                $checkbox2='';
+              }
+          $checkbox1=$checked_checkbox[0];
 
-              if ($result_check=="worked") 
-                {
-                   echo "Reservation Successful";
+          //echo  $checkbox1;
+          $userSeatingPosition= array(
+            'pos_id'=>$vr,
+            'posit'=>$checkbox1.','.$checkbox2
+            );
+       echo $userSeatingPosition['posit'];
 
-              $this->load->helper(array('form'));
-              // $data['scheduleId']=$schedule_id;
-               $data  = array('scheduleId'=>$schedule_id,'count_result'=>$count_result,'bus_company'=>$bus_company,'plate'=>$plate,'from'=>$from,'to'=>$to,'price'=>$price);
+        $result_check= $this->main_model->users_sitting($userSeatingPosition);
+        }
 
-              //$data  = array('title' =>'E-ticketing','scheduleId'=>$schedule_id);
+        if ($result_check=="worked")
+          {
+             echo "Reservation Successful";
 
-              $this->load->view('header',$data);
-              $this->load->view('payment',$data);
-              $this->load->view('footer');
+        $this->load->helper(array('form'));
+        // $data['scheduleId']=$schedule_id;
+         $data  = array('scheduleId'=>$schedule_id,'count_result'=>$count_result,'bus_company'=>$bus_company,'plate'=>$plate,'from'=>$from,'to'=>$to,'price'=>$price);
 
-                }
+        //$data  = array('title' =>'E-ticketing','scheduleId'=>$schedule_id);
 
-                
+        $this->load->view('header',$data);
+        $this->load->view('payment',$data);
+        $this->load->view('footer');
+      }
   }
 
   public function user_payment_details_login()
   {
-              $user_id=$this->session->userdata('user_id');
-              $email=$this->session->userdata('email');
+      $user_id=$this->session->userdata('user_id');
+      $email=$this->session->userdata('email');
 
-              $data=$this->main_model->get_login_data($user_id);
-              foreach ($data as $key) 
-              {
-               
-                       
-                       $name=$key->name;
-                       $phone_number=$key->mobile_no;
-                     
-              }
+      $data=$this->main_model->get_login_data($user_id);
+      foreach ($data as $key)
+      {
+           $name=$key->name;
+           $phone_number=$key->mobile_no;
+      }
+      $checked_checkbox=$this->input->post('seat');
+      $bus_company=$this->input->post('bus_company');
+      $count_result=count($checked_checkbox);
+      $schedule_id=$this->input->post('schedule_id');
 
-               echo $phone_number;
+      $plate=$this->input->post('plate');
+      $from=$this->input->post('from');
+      $to=$this->input->post('to');
+      $price=$this->input->post('price');
 
-              $checked_checkbox=$this->input->post('seat');
-              $bus_company=$this->input->post('bus_company');
-              $count_result=count($checked_checkbox);
-              $schedule_id=$this->input->post('schedule_id');
+      $vr=12;
 
-              $plate=$this->input->post('plate');
-              $from=$this->input->post('from');
-              $to=$this->input->post('to');
-              $price=$this->input->post('price');
+     if(isset($checked_checkbox[0]) || isset($checked_checkbox[1]))
 
-              $vr=12;
-             
-             if(isset($checked_checkbox[0]) || isset($checked_checkbox[1])) 
-              
-              {
-                    if (isset($checked_checkbox[1])) {
-                      $checkbox2=$checked_checkbox[1];
-                    }
-                    else
-                    {
-                      $checkbox2='';
-                    }
-                $checkbox1=$checked_checkbox[0];
-                
-                //echo  $checkbox1;
-                $userSeatingPosition= array(
-                  'pos_id'=>$vr,
-                  'posit'=>$checkbox1.','.$checkbox2
-                  );
-             echo $userSeatingPosition['posit'];
+      {
+            if (isset($checked_checkbox[1])) {
+              $checkbox2=$checked_checkbox[1];
+            }
+            else
+            {
+              $checkbox2='';
+            }
+        $checkbox1=$checked_checkbox[0];
 
-              $result_check= $this->main_model->users_sitting($userSeatingPosition);
-              }
+        //echo  $checkbox1;
+        $userSeatingPosition= array(
+          'pos_id'=>$vr,
+          'posit'=>$checkbox1.','.$checkbox2
+          );
+     echo $userSeatingPosition['posit'];
 
-              if ($result_check=="worked") 
-                {
-                   echo "Reservation Successful";
+      $result_check= $this->main_model->users_sitting($userSeatingPosition);
+      }
 
-              $this->load->helper(array('form'));
-              // $data['scheduleId']=$schedule_id;
-               $data  = array('scheduleId'=>$schedule_id,'count_result'=>$count_result,'bus_company'=>$bus_company,'plate'=>$plate,'from'=>$from,'to'=>$to,'price'=>$price,'user_id'=>$user_id,'email'=>$email,'name'=>$name,'phone_number'=>$phone_number);
+      if ($result_check=="worked")
+        {
+           echo "Reservation Successful";
+
+      $this->load->helper(array('form'));
+      // $data['scheduleId']=$schedule_id;
+       $data  = array('scheduleId'=>$schedule_id,'count_result'=>$count_result,'bus_company'=>$bus_company,'plate'=>$plate,'from'=>$from,'to'=>$to,'price'=>$price,'user_id'=>$user_id,'email'=>$email,'name'=>$name,'phone_number'=>$phone_number);
 
 
-              $this->load->view('header',$data);
-              $this->load->view('pesapal-iframe',$data);
-              $this->load->view('footer');
-
-                }
-
-                
+      $this->load->view('header',$data);
+      $this->load->view('pesapal-iframe',$data);
+      $this->load->view('footer');
+      }
   }
-
-
 
   public function complete_booking()
    {
-            
+
               $name=$this->input->post('name');
                 $bus_company=$this->input->post('bus_company');
               $phone_number=$this->input->post('phone_number');
@@ -323,16 +274,16 @@ class Home extends CI_Controller
                   'name' =>$name,
                   'mobile_no'=>$phone_number,
                   //'promotion_code'=>$promotion_code,
-                  'id_no' => $id_number 
+                  'id_no' => $id_number
                   );
 
                $result = $this->main_model->users_reservation($userReservationData);
 
-                if ($result=="Successful") 
+                if ($result=="Successful")
                 {
                     echo "Reserved";
                   $this->complete_reservation($schedule_id,$id_number,$bus_company);
-                
+
                 }
                 else
                 {
@@ -341,11 +292,11 @@ class Home extends CI_Controller
 
   }
 
-    
+
 
       public function complete_reservation($schedule_id,$id_number,$bus_company)
-  { 
-              
+  {
+
                 $pos=12;
                 $data=$this->main_model->get_sitting_position($pos);
                 $sche_id=$schedule_id;
@@ -358,11 +309,11 @@ class Home extends CI_Controller
                          else
                          {
                         //echo $data;
-                     
-                      
+
+
 
                        }
-               
+
                $length = 10;
 
                $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
@@ -379,18 +330,18 @@ class Home extends CI_Controller
                                 'bus_company'=>$bus_com,
                                 'journey_details'=>$sche_id,
                                 'bus_company'=>$bus_company
-                               
-                             
+
+
                                 );
 
                                $resultBooking = $this->main_model->users_booking($userBookingData);
 
-                               if ($resultBooking=="Successful1") 
+                               if ($resultBooking=="Successful1")
                                {
-                                   
+
                                  $this->clear_bookingspace($pos,$randomString);
 
-                                 
+
                                   // echo $var1_reserved3;
                                   // return $var1_reserved3;
                                }
@@ -404,10 +355,10 @@ class Home extends CI_Controller
     $generated_rand=$rand;
     $result=$this->main_model->clear_position_table($seat_po);
     if ($result=="worked") {
-    
+
      $this->get_booked_seats_db($generated_rand);
        // echo $var1_reserved1;
-   
+
     }
     else
     {
@@ -415,7 +366,7 @@ class Home extends CI_Controller
     }
   }
   public function get_booked_seats_db($random_gen)
-  { 
+  {
     $data=$this->main_model->get_booked_seats($random_gen);
 
     // print_r($data);
@@ -423,14 +374,14 @@ class Home extends CI_Controller
       $var1_reserved=$seats_exploded[0];
      // $var2=$seats_exploded[1];
       // echo $var1_reserved;
-     
-    if (empty($data)) 
+
+    if (empty($data))
     {
       echo "No data CDan";
     }
       else
         {
-        
+
         echo "ghjdghkjfgdf";
            //redirect(base_url().'index.php/home/load_iframe');
 
@@ -493,7 +444,7 @@ class Home extends CI_Controller
       $config['max_size'] = '10240';
 
       $this->load->library('upload', $config);
-      
+
 
       if ($this->upload->do_upload($pic_name))
       {
@@ -547,12 +498,6 @@ class Home extends CI_Controller
 
   public function account_settings()
   {
-    // $bus_company = $this->session->userdata('bus_company_id');
-    // $the_result = $this->busadmindata->get_subscription_status($bus_company);
-    //       (
-    //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-    //       );
-
     $this->load->helper(array('form'));
     $this->load->view('userpagesheader');
     $this->load->view('account_settings');
@@ -561,15 +506,15 @@ class Home extends CI_Controller
 
   public function paynotify ()
   {
-  
+
       $consumer_key="3TCZ7c3vQN5W50y8h39sHgxHFoqE0Vwt";//Register a merchant account on
                          //demo.pesapal.com and use the merchant key for testing.
                          //When you are ready to go live make sure you change the key to the live account
                          //registered on www.pesapal.com!
       $consumer_secret="5eO57BrgUIJs8E7hE8deZBvR8ko=";// Use the secret from your test
-                         //account on demo.pesapal.com. When you are ready to go live make sure you 
+                         //account on demo.pesapal.com. When you are ready to go live make sure you
                          //change the secret to the live account registered on www.pesapal.com!
-      $statusrequestAPI = 'https://www.pesapal.com/api/querypaymentstatus';//change to      
+      $statusrequestAPI = 'https://www.pesapal.com/api/querypaymentstatus';//change to
                          //https://www.pesapal.com/api/querypaymentstatus' when you are ready to go live!
 
       // Parameters sent to you by PesaPal IPN
@@ -614,21 +559,21 @@ class Home extends CI_Controller
          $status = $elements[1];
 
          curl_close ($ch);
-         
+
       //UPDATE YOUR DB TABLE WITH NEW STATUS FOR TRANSACTION WITH pesapal_transaction_tracking_id $pesapalTrackingId
 
           $pesapal= array(
-                                      'pnotification'=>$pesapalNotification,
-                                      'ptranid'=>$pesapalTrackingId,
-                                      'pmerchant'=>$pesapal_merchant_reference,
-                                      'status'=>$status
-                                 
-                                     
-                                   
-                                      );
+                    'pnotification'=>$pesapalNotification,
+                    'ptranid'=>$pesapalTrackingId,
+                    'pmerchant'=>$pesapal_merchant_reference,
+                    'status'=>$status
 
-                                     $resultPay = $this->main_model->payment_pesapal($pesapal);
-                      
+
+
+                    );
+
+                   $resultPay = $this->main_model->payment_pesapal($pesapal);
+
          if(DB_UPDATE_IS_SUCCESSFUL)
          {
             $resp="pesapal_notification_type=$pesapalNotification&pesapal_transaction_tracking_id=$pesapalTrackingId&                 pesapal_merchant_reference=$pesapal_merchant_reference";
@@ -638,7 +583,7 @@ class Home extends CI_Controller
             exit;
          }
       }
-    
+
   }
 
 }
