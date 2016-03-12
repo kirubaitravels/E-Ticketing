@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-      class Busadmin extends CI_Controller 
+      class Busadmin extends CI_Controller
       {
            function __construct()
             {
@@ -25,22 +25,22 @@
 
               else if($count<1000)
               {
-                $schedule_id = "J"."0".$new_code;          
+                $schedule_id = "J"."0".$new_code;
               }
               else if ($count<10000)
               {
-                $schedule_id = "J".$new_code;    
+                $schedule_id = "J".$new_code;
               }
 
 
               $the_company = $this->session->userdata('bus_company_id');
 
               $bus=$this->input->post('bus');
- 
+
               $origin=$this->input->post('from');
 
               $destination=$this->input->post('to');
-              
+
               $the_departure_date=$this->input->post('depart_date');
 
               $the_arrival_date=$this->input->post('arrival_date');
@@ -127,7 +127,7 @@
                                                           'bus_company'=>$the_company
                                                           );
                                     $result=$this->busadmindata->bus_schedule($schedule_data);
-                                    if ($result=="SUCCESS") 
+                                    if ($result=="SUCCESS")
                                     {
                                       echo "SUCCESS";
                                     }
@@ -162,7 +162,7 @@
               $config['max_size'] = '10240';
 
               $this->load->library('upload', $config);
-              
+
 
               if ( $this->upload->do_upload($pic_name))
               {
@@ -175,7 +175,7 @@
               }
 
               $bus=$this->input->post('reg_no');
- 
+
               $model=$this->input->post('model');
 
               $capacity=$this->input->post('capacity');
@@ -211,15 +211,13 @@
 
                         $result=$this->busadmindata->new_fleet($fleet_data);
 
-                        if ($result=="SUCCESS") 
+                        if ($result=="SUCCESS")
                         {
                             echo "SUCCESS";
-                          //redirect('busadmin/display_fleet','refresh');
                         }
                         else
                         {
                           echo "EXISTS";
-                         // echo "A bus with the registration number ".$fleet_data['bus_reg_no']. " exists in the database";
                         }
 
                   }
@@ -273,12 +271,12 @@
                             'physical_address'=>$result[9],
                             'postal_address'=>$result[10]
                             );
-                 
+
                   $this->session->set_userdata($session);
 
                   //echo "Registration Complete";
                   redirect('home/buscompany','refresh');
-              
+
               }
 
           }
@@ -292,54 +290,31 @@
               $ticketDetails= array(
                               'check_in_status'=>$status
                               );
-              // echo '<script language="javascript">';
-              // echo 'alert($serial)';
-              // echo '</script>';
               $result = $this->busadmindata->check_in_passenger($ticketDetails,$serial);
 
               if($result = 'SUCCESS')
               {
-                  //echo "Registration Complete";
                   redirect('busadmin/tickets','refresh');
-              
+
               }
-
           }
-
-
         public function fleet()
         {
           $bus_company = $this->session->userdata('bus_company_id');
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('fleet',$bus_company);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function display_fleet()
         {
           $bus_company= $this->session->userdata('bus_company_id');
           $data['buses']=$this->main_model->get_buses($bus_company);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('displayfleet',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function busdetails()
@@ -350,17 +325,10 @@
 
           $bus_company= $this->session->userdata('bus_company_id');
           $data['this_bus']=$this->busadmindata->get_bus_details($bus);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader1');
           $this->load->view('busdetails',$data);
           $this->load->view('userpagefooter');
-
-
 
         }
 
@@ -370,101 +338,52 @@
           $bus_company = $this->session->userdata('bus_company_id');
           $data['cities']=$this->main_model->get_cities();
           $data['buses']=$this->busadmindata->get_buses($bus_company);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
 
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader',$data);
           $this->load->view('schedule',$data);
           $this->load->view('userpagefooter',$data);
-
-
-
         }
 
         public function my_schedules()
         {
           $bus_company= $this->session->userdata('bus_company_id');
           $data['schedule']=$this->busadmindata->get_schedules($bus_company);
-
-          // foreach ($data as $myschedule) 
-          // {
-          //     $schedule_id = $myschedule->schedule_id;
-          //     $result=$this->main_model->get_allseats($schedule_id);
-          //     $implode_seats=implode(',',$result);         
-
-          //     // print_r($implode_seats);
-
-          //     $explode_seats=explode(',',$implode_seats);
-          //     $data1['value']=$explode_seats;
-          // }
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('myschedules',$data);
-          $this->load->view('bus_layout');        
+          $this->load->view('bus_layout');
           $this->load->view('userpagefooter');
-
         }
 
         public function schedule_details()
         {
           $bus_company= $this->session->userdata('bus_company_id');
           $data['schedule']=$this->busadmindata->get_schedules($bus_company);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('scheduledetails',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function bookings()
         {
           $bus_company= $this->session->userdata('bus_company_id');
           $data['company_bookings']=$this->busadmindata->get_company_bookings($bus_company);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('companybookings',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function tickets()
         {
           $bus_company= $this->session->userdata('bus_company_id');
           $data['company_tickets']=$this->busadmindata->get_company_tickets($bus_company);
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('tickets',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function subscription()
@@ -476,18 +395,10 @@
           $data['subscription_status'] = $result[0];
           $data['subscription_date'] = $result[1];
           $data['subscription_period'] = $result[2];
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('subscription_status',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function renew_subscription()
@@ -497,26 +408,14 @@
           $result = explode(",", $the_result);
           $data['subscription_status'] = $result[0];
           $data['subscription_date'] = $result[1];
-          // $data  = array
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('renew_subscription',$data);
           $this->load->view('userpagefooter');
-
-
-
         }
 
         public function stats()
         {
-          //       (
-          //         'title' =>'KRTS','heading' =>'E-ticketing Portal','message' =>'The best place you can be'
-          //       );
-
           $this->load->helper(array('form'));
           $this->load->view('userpagesheader');
           $this->load->view('stats');
@@ -524,35 +423,25 @@
         }
 
         public function subscription_renew()
-        {   
+        {
             $bus_company= $this->session->userdata('bus_company_id');
 
-            $amount = $this->input->post('subscription_package'); 
+            $amount = $this->input->post('subscription_package');
 
             $email = $this->busadmindata->get_company_email($bus_company);
 
-            $company_details = $this->busadmindata->get_company_details($bus_company);   
+            $company_details = $this->busadmindata->get_company_details($bus_company);
 
             foreach($company_details as $details)
             {
               $name = $details->company_name;
-              // $from = $_GET["from"];
-              // $to = $_GET["to"];
-              // $price = $_GET["price"];
-              // $count_result = $_GET["count_result"];
               $phone_number =$details->telephone;
+            }
 
-              // echo $name;
-              // echo $email;
-            }  
-
-            
             $data = array('name' =>$name ,'phone_number'=>$phone_number,'email'=>$email, 'amount'=>$amount,'the_company'=>$bus_company);
-            //echo "fbhdfhdjh";
             $this->load->view('userpagesheader');
             $this->load->view('pesapal-iframe-subscription',$data);
             $this->load->view('userpagefooter');
-
         }
 
         public function deactivate_account()
@@ -566,6 +455,5 @@
             redirect('login/logout','refresh');
           }
         }
-  
   }
 ?>
