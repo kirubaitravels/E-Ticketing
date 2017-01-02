@@ -5,13 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- END META SECTION -->
-        
-				
+
+
 		<title>KRTS</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend/css/revolution-slider/extralayers.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend/css/revolution-slider/settings.css" media="screen" />
-        
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend/css/styles.css" media="screen" /> 
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend/css/styles.css" media="screen" />
 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>e-ticketingcss/e-ticketing.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>e-ticketingcss/header_footer.css">
@@ -26,57 +26,6 @@
        	<!--Added on 20/01/2015-->
 
        	<script src="http://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-       	<script>
-		// var geocoder;
-		// var map;
-		// //Initial map status. Loading with the coordinates of Nairobi
-		//   function initialize() {
-		//     geocoder = new google.maps.Geocoder();
-		//     var latlng = new google.maps.LatLng(-1.292056,36.821946);
-		//     var mapOptions = {
-		//       zoom: 6,
-		//       center: latlng
-
-		//     }
-		// 	  // map = new google.maps.Map(document.getElementById("myGoogleMap"), mapOptions);
-		// 	  // directionsDisplay.setMap(map);
-		// 	map = new google.maps.Map(document.getElementById("myGoogleMap"), mapOptions);
-		//   }
-
-		// // Route Markers
-		// var address = '<?php echo $origin_station;?>';
-		// // alert(address);
-		// function codeAddress(address) {		  	
-		//     geocoder.geocode( {address}, function(results, status) {
-		//       if (status == google.maps.GeocoderStatus.OK) {
-		//         map.setCenter(results[0].geometry.location);
-		//         var marker = new google.maps.Marker({
-		//             map: map,
-		//             position: results[0].geometry.location
-		//         });
-		//       } else {
-		//         alert("Geocode was not successful for the following reason: " + status);
-		//       }
-		//     });
-		//   }
-
-		// var address1 = '<?php echo $destination_station;?>';
-		//   function codeAddress1(address1) {		  	
-		//     geocoder.geocode( {address}, function(results, status) {
-		//       if (status == google.maps.GeocoderStatus.OK) {
-		//         map.setCenter(results[0].geometry.location);
-		//         var marker = new google.maps.Marker({
-		//             map: map,
-		//             position: results[0].geometry.location
-		//         });
-		//       } else {
-		//         alert("Geocode was not successful for the following reason: " + status);
-		//       }
-		//     });
-		// google.maps.event.addDomListener(window, 'load', initialize);
-
-	</script>
-
 
 	<!--Google Maps API.
 	Routes
@@ -126,7 +75,7 @@
 
 	</head>
 	<body id = "body" onload = "initialize()">
-    
+
     <!-- page container -->
     <div class="page-container">
 
@@ -162,7 +111,7 @@
 										<div class ="form-group navbar-form navbar-right">
 											<div id = "login_message" style = "background-color:;height:3%;margin-left:2px;margin-bottom:3px"></div>
 											<div class = "login_area">
-												
+
 												<input id ="loginfields" class ="form-control"  title ="Type in your email"type ="text" maxlength="40" name ="login_email" placeholder = "example@youremail.com" required></input>
 												<br>
 												<input id ="loginfields" class ="form-control" type ="password" maxlength="40" name ="login_password" placeholder = "Password" required></input>
@@ -172,7 +121,7 @@
 											</div>
 										</div>
 										<?php echo form_close();?>
-											
+
 									</div>
 
 									<form>
@@ -185,7 +134,7 @@
 									<div class="input-group input-group-lg">
 										<div id="formForgotPassword" class="form collapse">
 										<?php echo validation_errors();?>
-										<?php echo form_open('login/passwordReset','id="formForgotPassword"');?>										
+										<?php echo form_open('login/passwordReset','id="formForgotPassword"');?>
 		                                    <div class ="form-group">
 		                                    <label style = "color:white;margin-left:12px;margin-top:5px;font-weight:normal;">Get help with your password</label>
 		                                    <div id = "pwd_reset_message" style = "background-color:;height:2%;"></div>
@@ -217,7 +166,7 @@
 														<option value = "PREMIUM USER">User</option>
 														<option value = "BUS COMPANY">Bus Company</option>
 													</select>
-													<br>										
+													<br>
 													<input id ="loginfields" class ="form-control" type ="text" maxlength="40" name ="my_email" placeholder = "example@youremail.com"></input>
 													<br>
 													<input id ="loginfields" class ="form-control" type ="password" maxlength="40" name ="the_password" placeholder = "Password"></input>
@@ -229,13 +178,13 @@
 											</div>
 		    							<?php echo form_close();?>
 		    							</div>
-											
+
 									</div>
 
 
 								</div>
 							</ul>
-						
+
 						</li>
 
 					</ul>

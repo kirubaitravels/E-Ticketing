@@ -4,7 +4,7 @@
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
-                        <p>Are you sure you want to log out?</p>                    
+                        <p>Are you sure you want to log out?</p>
                         <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
                     </div>
                     <div class="mb-footer">
@@ -26,11 +26,11 @@
     <!--End of footer text-->
 
         <!--<script type="text/javascript" src="<?php echo base_url();?>Bootstrap/dist/js/bootstrap.js"></script>-->
-        
+
         <script src="<?php echo base_url();?>Bootstrap/dist/js/jquery.min.js"></script>
       <script src="<?php echo base_url();?>Bootstrap/dist/js/jquery-ui.min.js"></script>
       <script src="<?php echo base_url();?>Bootstrap/dist/js/bootstrap.min.js"></script>
-    
+
     <!--Date Picker-->
         <script>
          $( "#dp" ).datepicker({
@@ -55,18 +55,18 @@
 
       var base_url='<?php echo base_url();?>';
 
-     
+
         $('div#tab1').html("Searching records...");
-     
+
         $.post(base_url+'index.php/searchBus/search_result',{from:from,to:to,depart_date:depart_date,return_date:return_date},function(data){
            $('div#tab1').html(data);
-        
+
         });
     });
-      
-     
+
+
      </script>
-     
+
          <script>
             $('input#submit_login').on('click',function(){
 
@@ -77,16 +77,16 @@
 
           var base_url='<?php echo base_url();?>';
 
-         
+
             $('div#tab1').html("Searching records...");
-         
+
             $.post(base_url+'index.php/searchBus/search_result_login',{from:from,to:to,depart_date:depart_date,return_date:return_date},function(data){
                $('div#tab1').html(data);
-            
+
             });
         });
-          
-         
+
+
          </script>
 
      <!-- Picture Upload JS -->
@@ -95,7 +95,7 @@
       //  $('#busRegistration').submit(function(e) {
       //    e.preventDefault();
       //    $.ajaxFileUpload({
-      //      url       :'http://localhost/ticketing/images/CompanyPictures/', 
+      //      url       :'http://localhost/ticketing/images/CompanyPictures/',
       //      secureuri   :false,
       //      fileElementId :'photo1',
       //      dataType    : 'json',
@@ -122,26 +122,6 @@
 
         <script>
 
-      // var journey_input = $('#journey_input');
-
-      // journey_input.change(function(){
-      //  codeAddress(journey_input.val());
-      // });
-
-      // var journey_input_to = $('#journey_input_to');
-
-      // journey_input_to.change(function(){
-      //  codeAddress1(journey_input_to.val());
-      // });
-
-      // var route = $('#journey_input','#journey_input_to')
-
-      // route.submit(function(){
-      //  calcRoute(route.val());
-      // });
-
-    </script>
-
     <script>
         // var dropdown_click = $('#btnNewuser');
         // var dropdown_menu = $('#dropdown-menu');
@@ -155,50 +135,50 @@
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="<?php echo base_url()?>template/audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="<?php echo base_url()?>template/audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                  
-        
+        <!-- END PRELOADS -->
+
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/bootstrap/bootstrap.min.js"></script>
         <!-- END PLUGINS -->
 
-        <!-- START THIS PAGE PLUGINS-->        
-        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/icheck/icheck.min.js'></script>        
+        <!-- START THIS PAGE PLUGINS-->
+        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
 
         <!-- TICKETS PAGE PLUGINS -->
         <script type='text/javascript' src='<?php echo base_url()?>/template/js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="<?php echo base_url()?>/template/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url()?>/template/js/plugins/datatables/jquery.dataTables.min.js"></script>    
+
+        <script type="text/javascript" src="<?php echo base_url()?>/template/js/plugins/datatables/jquery.dataTables.min.js"></script>
         <!-- END PAGE PLUGINS -->
-        
+
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/morris/raphael-min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/morris/morris.min.js"></script>       
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/morris/morris.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/rickshaw/d3.v3.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/rickshaw/rickshaw.min.js"></script>
         <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
-        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>                
-        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/bootstrap/bootstrap-datepicker.js'></script>                
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/owl/owl.carousel.min.js"></script>                 
-        
+        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+        <script type='text/javascript' src='<?php echo base_url()?>template/js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/owl/owl.carousel.min.js"></script>
+
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/moment.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- END THIS PAGE PLUGINS-->        
+        <!-- END THIS PAGE PLUGINS-->
 
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="<?php echo base_url()?>template/js/settings.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/actions.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url()?>template/js/demo_dashboard.js"></script>
-        <!-- END TEMPLATE -->                 
 
-    <!-- END SCRIPTS --> 
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/plugins.js"></script>
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/actions.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url()?>template/js/demo_dashboard.js"></script>
+        <!-- END TEMPLATE -->
+
+    <!-- END SCRIPTS -->
 
     <!-- Stations Load on map -->
         <script>
@@ -210,7 +190,7 @@
         alert(station);
       });
 
-    </script> 
+    </script>
 
         <!-- Bus Structure Scripts -->
         <script type="text/javascript">
@@ -222,10 +202,10 @@
         <script type="text/javascript">
       var returned_seat
            $('input#submit_for').on('click',function(){
-            
-         
-          
-          
+
+
+
+
           var name=$('input#name').val();
           var phone_number=$('input#phone_number').val();
           var id_number=$('input#id_number').val();
@@ -240,64 +220,64 @@
                  returned_seat=data;
                  alert(returned_seat);
 
-                
+
             });
         });
 
             function select_seat(div_name,checked_checkbox)
-            { 
+            {
 
-                
+
              if (document.getElementById(checked_checkbox).checked==true) {
-                   
+
                        $('.'+div_name).html("<img src='"+base_url+"images/seat_clicked.png'>");
-                         
+
                  }
-                 else if (document.getElementById(checked_checkbox).checked==false) 
+                 else if (document.getElementById(checked_checkbox).checked==false)
                  {
                     $('.'+div_name).html("<img src='"+base_url+"images/seat_available.png'>");
                 }
 
         }
-        
 
-        </script>  
+
+        </script>
         <!--End of Checking checkbox-->
-            
+
         <script type="text/javascript">
-            
+
 
                         var value_checked=<?php echo '["' . implode('","',$value) . '"]'?>;
 
 
                         var arraylength =value_checked.length;
-             
+
                         for (var i = 0;i<arraylength; i++) {
-                           
+
                              var elem=document.getElementById(value_checked[i]);
                                 elem.style.display='none';
 
-                                          
+
                    document.getElementsByClassName(value_checked[i])
-                           
-                               $('.'+value_checked[i]).html("<img src='"+base_url+"images/seat_booked.png'>");   
-                                
-                           
+
+                               $('.'+value_checked[i]).html("<img src='"+base_url+"images/seat_booked.png'>");
+
+
                         };
 
-                         
-                       
+
+
         </script>
 
 
 
         <script type="text/javascript">
-                  
-                   var countCheckedCheckboxes; 
+
+                   var countCheckedCheckboxes;
                    var checkboxes = $('#form_det td input[type="checkbox"]');
 
                    checkboxes.change(function(){
-                  
+
                     countCheckedCheckboxes  = checkboxes.filter(':checked').length;
                     var data="Can only book a maximum of 2 seats";
                     var data1="Will be processed";
@@ -315,49 +295,49 @@
                     {
                         $('div#error_div').html(data1);
                     }
-                      
+
                     });
-                    
+
                      function checkseats()
                     {
-                        
+
                          var seats=countCheckedCheckboxes;
-                       
+
 
                             if (seats<=4)
-                             {                               
-                                
+                             {
+
                                 // alert("Cool");
                                  return true;
                             }
                             else
                             {
                                 var data="Seats Selelected More than 2!!";
-                                
+
                                 $('div#error_div').html(data);
                                 return false;
                             }
 
 
-           
-                    }         
 
-        </script> 
+                    }
+
+        </script>
 
         <!-- Add New Station -->
         <!-- Admin Page -->
         <script>
             $('input#add_station').on('click',function()
             {
-                var station_name=$('input[name="station_name"]').val();               
+                var station_name=$('input[name="station_name"]').val();
 
                 var base_url='<?php echo base_url();?>';
 
             $('div#station_message').html("<span class = 'fa fa-cog' style = 'color:green;'> Processing</span>");
 
-         
+
             //$('div#tab1').html("Searching records...");
-         
+
                 $.post(
                   base_url+'index.php/admin/newstation',
                   {station_name:station_name},
@@ -374,8 +354,8 @@
                     }
                   });
             });
-          
-         
+
+
          </script>
 
 
@@ -384,7 +364,7 @@
               /*========================================do uploads function===============================================*/
 
         $('input#send_message').on('click',function(e){e.preventDefault(); upload_message("new_messages");});
-            
+
               function upload_message(form_id)
               {
 
@@ -423,7 +403,7 @@
                     }
                     //$('div#message_message').html(data);
                   }
-                });   
+                });
               }
           </script>
 
@@ -433,14 +413,14 @@
         <script>
             $('input#reset_password').on('click',function()
             {
-                var the_old_password=$('input[name="the_old_password"]').val();               
+                var the_old_password=$('input[name="the_old_password"]').val();
                 var new_password=$('input[name="new_password"]').val();
                 var confirm_new_password=$('input[name="confirm_new_password"]').val();
 
                 var base_url='<?php echo base_url();?>';
 
                 //$('div#old_password_error').html("<span class = 'fa fa-cog' style = 'color:green;'> Processing</span>");
-         
+
                 $.post(
                   base_url+'index.php/user/update_account_settings',
                   {the_old_password:the_old_password,new_password:new_password,confirm_new_password:confirm_new_password},
@@ -484,14 +464,14 @@
                     {
                       $('div#password_error').html("<span style ='color:red'>An error occured. Please refresh and try again</span>");
                     }
-                      
+
                   }
                   );
 
                return false;
           });
-          
-         
+
+
          </script>
 
          <!-- New Schedule -->
@@ -501,18 +481,18 @@
                 var bus=$('select[name="bus"]').val();
                 var from=$('select[name="from"]').val();
                 var to=$('select[name="to"]').val();
-                var depart_date=$('input[name="depart_date"]').val(); 
+                var depart_date=$('input[name="depart_date"]').val();
                 var arrival_date=$('input[name="arrival_date"]').val();
-                var depart_time=$('input[name="depart_time"]').val(); 
+                var depart_time=$('input[name="depart_time"]').val();
                 var arrival_time=$('input[name="arrival_time"]').val();
-                var price=$('input[name="price"]').val(); 
-                var vip_price=$('input[name="vip_price"]').val();              
+                var price=$('input[name="price"]').val();
+                var vip_price=$('input[name="vip_price"]').val();
 
                 var base_url='<?php echo base_url();?>';
 
                 $('div#returned_message').html("<span class = 'fa fa-cog' style = 'color:green;'> Processing</span>");
 
-         
+
                 $.post(
                   base_url+'index.php/busadmin/newBusSchedule',
                   {bus:bus,from:from,to:to,depart_date:depart_date,arrival_date:arrival_date,depart_time:depart_time,arrival_time:arrival_time,price:price,vip_price:vip_price},
@@ -571,7 +551,7 @@
                  });
                 return false;
         });
-         
+
          </script>
 
          <!-- Add buses to fleet -->
@@ -579,7 +559,7 @@
               /*========================================do uploads function===============================================*/
 
         $('input#add_bus').on('click',function(e){e.preventDefault(); add_bus("busRegistration");});
-            
+
               function add_bus(form_id)
               {
 
@@ -619,7 +599,7 @@
                     }
                     //$('div#message_message').html(data);
                   }
-                });   
+                });
               }
           </script>
 
@@ -628,10 +608,10 @@
         // $(document).on("click", ".open-myMap", function () {
         //      var address = $(this).data('id');
         //      $(".modal-body #bookId").val( myBookId );
-        //      // As pointed out in comments, 
+        //      // As pointed out in comments,
         //      // it is superfluous to have to manually call the modal.
         //      // $('#addBookDialog').modal('show');
         // });
-        </script>      
+        </script>
     </body>
 </html>
